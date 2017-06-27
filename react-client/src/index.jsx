@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      books: []
+      books: [1,2,3,4,5]
     }
   }
 
@@ -23,14 +23,23 @@ class App extends React.Component {
 
   }
 
+  addBook() {
+
+  }
+
   fetchBooks() {
   }
 
   render () {
-    return (<div>
-      <h1>PageTurner</h1>
-      <h3>The public domain book manager app</h3>
-    </div>)
+    return (
+      <div>
+        <h1 id="appTitle">PageTurner</h1>
+        <h3 id="appSubtitle">The public domain book manager app</h3>
+        <BookShelf />
+        <Search onSearch={this.search} />
+        <List books={this.state.books} />
+      </div>
+    )
   }
 }
 
