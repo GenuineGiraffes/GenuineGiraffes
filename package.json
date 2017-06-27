@@ -16,9 +16,11 @@
     "body-parser": "^1.17.2",
     "jquery": "^3.2.1",
     "pg": "^6.4.0",
+    "pg-hstore": "^2.3.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "sequelize": "^4.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
