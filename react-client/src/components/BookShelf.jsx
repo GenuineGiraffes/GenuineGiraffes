@@ -9,7 +9,7 @@ const BookShelf = (props) => (
       </div>
       <div className="book book-tilted">
         <div className="book book-blue">
-          <h3>TEST BOOK2</h3>
+          <h2>TEST BOOK2</h2>
         </div>
       </div>
       <div className="book book-green">
@@ -18,7 +18,13 @@ const BookShelf = (props) => (
       <div className="book book-green">
         <h2>TEST BOOK</h2>
       </div>
+      <div className="book book-purple">
+        <h2>TEST BOOK</h2>
+      </div>
       <div className="book book-green">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-tan">
         <h2>TEST BOOK</h2>
       </div>
       <div className="book book-green">
@@ -33,7 +39,39 @@ const BookShelf = (props) => (
       <div className="book book-green">
         <h2>TEST BOOK</h2>
       </div>
+      <div className="book book-brown">
+        <h2>TEST BOOK</h2>
+      </div>
       <div className="book book-green">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-tan">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-purple">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-green">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-brown">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-green">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-tilted">
+        <div className="book book-green">
+          <h2>TEST BOOK</h2>
+        </div>
+      </div>
+      <div className="book book-green">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-green">
+        <h2>TEST BOOK</h2>
+      </div>
+      <div className="book book-brown">
         <h2>TEST BOOK</h2>
       </div>
       <div className="book book-green">
@@ -42,43 +80,7 @@ const BookShelf = (props) => (
       <div className="book book-green">
         <h2>TEST BOOK</h2>
       </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
+      <div className="book book-brown">
         <h2>TEST BOOK</h2>
       </div>
       <div className="book book-green">
