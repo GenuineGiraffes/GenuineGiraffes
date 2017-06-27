@@ -11,8 +11,17 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      books: []
+      books: [1,2,3,4,5,6,7,8,9],
+      isModalOpen: false
     }
+  }
+
+  openModal() {
+    this.setState({ isModalOpen: true })
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false })
   }
 
   componentWillMount() {
@@ -23,14 +32,23 @@ class App extends React.Component {
 
   }
 
+  addBook() {
+
+  }
+
   fetchBooks() {
   }
 
   render () {
-    return (<div>
-      <h1>PageTurner</h1>
-      <h3>The public domain book manager app</h3>
-    </div>)
+    return (
+      <div>
+        <h1 id="appTitle">PageTurner</h1>
+        <h3 id="appSubtitle">The public-domain book manager app</h3>
+        <BookShelf />
+        <Search onSearch={this.search} />
+        <List books={this.state.books} modal={this.state.isModalOpen}/>
+      </div>
+    )
   }
 }
 
