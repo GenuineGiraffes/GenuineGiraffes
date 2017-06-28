@@ -17,6 +17,7 @@ class App extends React.Component {
     this.addBookToLibrary = this.addBookToLibrary.bind(this);
     this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
     this.fetchLibraryBooks = this.fetchLibraryBooks.bind(this);
+    this.search = this.search.bind(this);
   }
 
   openModal() {
