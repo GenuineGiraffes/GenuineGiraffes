@@ -13,8 +13,8 @@ app.use(express.static(__dirname + '/../react-client/'));
 
 
 
-var port = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(port, function () {
-  console.log(`listening on port ${port}`);
+app.listen(PORT, function () {
+  console.log(`listening on port ${PORT}`);
 });
