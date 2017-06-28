@@ -29,14 +29,19 @@ class App extends React.Component {
   }
 
   search(term) {
-    console.log(`${term} was searched`);
-     // Axios.post('/books/import', {'book': book})
-     //  .then((res) => {
-     //    console.log('AXIOS SUCCESS POST: ', res)
-     //  })
-     //  .catch((err) => {
-     //    console.log('AXIOS POST ERROR: ', err);
-     //  });
+    let self = this;
+    $.ajax({
+      type: 'POST',
+      url: 'book/import',
+      data: JSON.stringify({ q: term }),
+      contentType: 'application/JSON',
+      success: function (data) {
+        console.log('POST successful');
+      },
+      error: function () {
+        console.log('POST failed');
+      }
+    });
   }
 
   addBook(book) {
@@ -78,7 +83,7 @@ class App extends React.Component {
         <h1 id="appTitle">PageTurner</h1>
         <h3 id="appSubtitle">The public-domain book manager app</h3>
         <BookShelf />
-        <Search onSearch={this.search} />
+        <Search onSearch={this.search.bind(this)} />
         <List books={this.state.books} modal={this.state.isModalOpen}/>
       </div>
     )

@@ -1,0 +1,131 @@
+@font-face {
+  font-family: 'Trajan';
+  src: url(./TrajanShadowedRegular.ttf);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: skyblue;
+
+}
+
+.bookshelf {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  border: 10px #bf7962 solid;
+  overflow: hidden;
+  background-color: #4D2F25;
+  background-size: 10px 230px;
+  box-shadow: 0px 1000px 0px 400px #7A7668;
+}
+
+.book {
+  height: 200px;
+  width: 40px;
+  float: left;
+  color: white;
+  font-size: 0.9em;
+  font-family: Verdana, sans-serif;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  transition: transform 0.4s ease;
+  border: red;
+}
+
+.book-tilted {
+  float: left;
+  width: 74px;
+}
+
+.book-tilted > .book {
+  transform: translateY(-3px) translateX(15px) rotate(9deg) ;
+}
+
+.book:hover {
+  transform: scale(1.15);
+}
+
+.book-green {
+  background-color: darkgreen;
+  border-left: 2px solid lighten(darkgreen, 4%);
+  border-right: 2px solid darken(darkgreen, 4%);
+}
+
+.book-blue {
+  background-color: darkblue;
+  border-left: 2px solid lighten(darkblue, 4%);
+  border-right: 2px solid darken(darkblue, 4%);
+}
+
+.book-purple {
+  background-color: purple;
+  border-left: 2px solid lighten(purple, 4%);
+  border-right: 2px solid darken(purple, 4%);
+}
+
+.book-tan {
+  background-color: tan;
+  border-left: 2px solid lighten(tan, 4%);
+  border-right: 2px solid darken(tan, 4%);
+}
+
+.book-brown {
+  background-color: brown;
+  border-left: 2px solid lighten(brown, 4%);
+  border-right: 2px solid darken(brown, 4%);
+}
+
+.book h2 {
+  padding: 0;
+  font-size: 1em;
+  transform-origin: 0% 0%;
+  transform: rotate(0.25turn) translateY(-35px);
+  width: 170px;
+}
+
+.book h3 {
+  padding: 0;
+  font-size: 0.7em;
+  transform-origin: 0 0;
+  transform: rotate(0.25turn) translateY(-15px) translateX(-20px);
+  width: 150px;
+}
+
+#appTitle {
+  display: flex;
+  justify-content: center;
+  font-family: 'Prata', serif;
+}
+
+#appSubtitle {
+  display: flex;
+  justify-content: center;
+  font-family: 'Trajan';
+}
+
+#myBooks {
+  display: flex;
+  justify-content: center;
+}
+
+#searchArea {
+  display: flex;
+  justify-content: center;
+  height: 3.25em;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#searchResults {
+  display: flex;
+  justify-content: center;
+}
+
+#resultsNumber {
+  display: flex;
+  justify-content: center;
+}
