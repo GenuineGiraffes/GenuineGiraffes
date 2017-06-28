@@ -14,7 +14,7 @@ const List = (props) => (
           <th>Language</th>
           <th>Cover</th>
           <th>Audio</th>
-          <th>ISBN</th>
+          <th>Add</th>
         </tr>
       </thead>
       <tbody>

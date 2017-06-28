@@ -4,7 +4,7 @@ import $ from 'jquery';
 import List from './components/List.jsx';
 import Search from './components/Search.jsx';
 import BookShelf from './components/BookShelf.jsx';
-import Axios from 'axios';
+// import Axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,19 +25,52 @@ class App extends React.Component {
   }
 
   componentWillMount() {
+    this.fetchBooksFromDB();
   }
 
   search(term) {
     console.log(`${term} was searched`);
-
+     // Axios.post('/books/import', {'book': book})
+     //  .then((res) => {
+     //    console.log('AXIOS SUCCESS POST: ', res)
+     //  })
+     //  .catch((err) => {
+     //    console.log('AXIOS POST ERROR: ', err);
+     //  });
   }
 
-  addBook() {
-
+  addBook(book) {
+    // Axios.post('/books/import', {'book': book})
+    //   .then((res) => {
+    //     console.log('AXIOS SUCCESS POST: ', res)
+    //   })
+    //   .catch((err) => {
+    //     console.log('AXIOS POST ERROR: ', err);
+    //   });
   }
 
-  fetchBooks() {
+  fetchBooksFromDB() {
+    // var context = this;
+
+    // Axios.get('/books')
+    //   .then((data) => {
+    //     console.log('Axios data: ', data);
+    //     context.setState({books: data})
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   })
   }
+
+  // removeBook(book) {
+  //   Axios.delete('/books', {'book': book})
+  //     .then((res) => {
+  //       console.log('DELETED BOOK: ', res)
+  //     })
+  //     .catch((err) => {
+  //       console.log('ERROR DELETING: ', err)
+  //     })
+  // }
 
   render () {
     return (
