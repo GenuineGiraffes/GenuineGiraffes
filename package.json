@@ -5,7 +5,7 @@
   "author": "Brendan Burns",
   "license": "",
   "engines": {
-    "node": ">=6.4.0"
+    "node": "6.4.0"
   },
   "scripts": {
     "heroku-postbuild": "webpack -d",
