@@ -4,7 +4,7 @@ import $ from 'jquery';
 import List from './components/List.jsx';
 import Search from './components/Search.jsx';
 import BookShelf from './components/BookShelf.jsx';
-// import Axios from 'axios';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +14,10 @@ class App extends React.Component {
       books: [1,2,3,4,5,6,7,8,9],
       isModalOpen: false
     }
+    this.addBookToLibrary = this.addBookToLibrary.bind(this);
+    this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
+    this.fetchLibraryBooks = this.fetchLibraryBooks.bind(this);
+    this.search = this.search.bind(this);
   }
 
   openModal() {
@@ -24,58 +28,49 @@ class App extends React.Component {
     this.setState({ isModalOpen: false })
   }
 
-  componentWillMount() {
-    this.fetchBooksFromDB();
-  }
-
   search(term) {
-    let self = this;
-    $.ajax({
-      type: 'POST',
-      url: 'book/import',
-      data: JSON.stringify({ q: term }),
-      contentType: 'application/JSON',
-      success: function (data) {
-        console.log('POST successful');
-      },
-      error: function () {
-        console.log('POST failed');
-      }
-    });
+    console.log(`Submitting POST request...Searching ${term}...`)
+    axios.post('/book/import', {q: term})
+      .then((res) => {
+        console.log('Search successful!');
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      });
   }
 
-  addBook(book) {
-    // Axios.post('/books/import', {'book': book})
-    //   .then((res) => {
-    //     console.log('AXIOS SUCCESS POST: ', res)
-    //   })
-    //   .catch((err) => {
-    //     console.log('AXIOS POST ERROR: ', err);
-    //   });
+  addBookToLibrary(book) {
+    console.log('Submitting POST request...Adding book to library...')
+    axios.post('/library', {'book': book})
+      .then((res) => {
+        console.log('POST successful! Added book to library!')
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      });
   }
 
-  fetchBooksFromDB() {
-    // var context = this;
-
-    // Axios.get('/books')
-    //   .then((data) => {
-    //     console.log('Axios data: ', data);
-    //     context.setState({books: data})
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
+  deleteBookFromLibrary(book) {
+    console.log('Submitting POST request...deleting book from library...');
+    axios.post('/library', {'book': book})
+      .then((res) => {
+        console.log('POST successful! Deleted book from library!');
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      })
   }
 
-  // removeBook(book) {
-  //   Axios.delete('/books', {'book': book})
-  //     .then((res) => {
-  //       console.log('DELETED BOOK: ', res)
-  //     })
-  //     .catch((err) => {
-  //       console.log('ERROR DELETING: ', err)
-  //     })
-  // }
+  fetchLibraryBooks() {
+    console.log('Submitting GET request...fetching all library books...')
+    axios.get('/library')
+      .then((res) => {
+        console.log('GET successful! Got library books!')
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      });
+  }
 
   render () {
     return (
@@ -83,7 +78,7 @@ class App extends React.Component {
         <h1 id="appTitle">PageTurner</h1>
         <h3 id="appSubtitle">The public-domain book manager app</h3>
         <BookShelf />
-        <Search onSearch={this.search.bind(this)} />
+        <Search onSearch={this.search} />
         <List books={this.state.books} modal={this.state.isModalOpen}/>
       </div>
     )
