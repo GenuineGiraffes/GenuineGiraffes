@@ -34,7 +34,7 @@ const Book = sequelize.define('book', {
     unique: true
   },
   title: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     unique: true,
     allowNull: false
   },
@@ -67,10 +67,18 @@ sequelize.sync({
   force: true
 });
 
-const addBooktoLibrary = (req, res) => {
-  Book.create({
-
-  });
+const addBooktoLibrary = (book) => {
+  return Book.create({
+    isbn: book.isbn,
+    title: book.title,
+    author: book.author,
+    cover: book.cover,
+    yearPublished: book.yearPublished,
+    content: book.content,
+    audio: book.audio,
+    numPages: book.numPages,
+    description: book.description
+  })
 };
 
 const removeBookFromLibrary = (req, res) => {

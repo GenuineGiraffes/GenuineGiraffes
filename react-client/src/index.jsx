@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
+import SearchList from './components/SearchList.jsx';
 import Search from './components/Search.jsx';
 import BookShelf from './components/BookShelf.jsx';
 import axios from 'axios';
@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      books: [1,2,3,4,5,6,7,8,9],
+      searchedBooks: [1, 2, 3],
       isModalOpen: false
     }
     this.addBookToLibrary = this.addBookToLibrary.bind(this);
@@ -32,7 +32,13 @@ class App extends React.Component {
     console.log(`Submitting POST request...Searching ${term}...`)
     axios.post('/book/import', {q: term})
       .then((res) => {
-        console.log('Search successful!');
+        const searchedBooks = res.data;
+        return this.setState({
+          searchedBooks: searchedBooks
+        });
+      })
+      .then( () => {
+        console.log('Set the book state!', this.state.searchedBooks)
       })
       .catch((err) => {
         console.log('ERROR: ', err);
@@ -40,6 +46,7 @@ class App extends React.Component {
   }
 
   addBookToLibrary(book) {
+    console.log('Your book...', book)
     console.log('Submitting POST request...Adding book to library...')
     axios.post('/library', {'book': book})
       .then((res) => {
@@ -79,7 +86,7 @@ class App extends React.Component {
         <h3 id="appSubtitle">The public-domain book manager app</h3>
         <BookShelf />
         <Search onSearch={this.search} />
-        <List books={this.state.books} modal={this.state.isModalOpen}/>
+        <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} modal={this.state.isModalOpen}/>
       </div>
     )
   }
