@@ -4,6 +4,10 @@ import $ from 'jquery';
 import SearchList from './components/SearchList.jsx';
 import Search from './components/Search.jsx';
 import BookShelf from './components/BookShelf.jsx';
+import ModalSearchList from './components/ModalSearchList.jsx';
+import ModalBookOnShelf from './components/ModalBookOnShelf.jsx';
+import Boron from 'boron';
+import Modal from 'boron/OutlineModal';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -12,20 +16,33 @@ class App extends React.Component {
 
     this.state = {
       searchedBooks: [1, 2, 3],
-      isModalOpen: false
+      modalSearchListOpen: false,
+      modalBookOnShelfOpen: false,
     }
     this.addBookToLibrary = this.addBookToLibrary.bind(this);
     this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
     this.fetchLibraryBooks = this.fetchLibraryBooks.bind(this);
     this.search = this.search.bind(this);
+    this.showModalSearchList = this.showModalSearchList.bind(this);
+    this.showModalBookOnShelf = this.showModalBookOnShelf.bind(this);
   }
 
-  openModal() {
-    this.setState({ isModalOpen: true })
+  showModalSearchList(){
+    this.setState({
+      modalSearchListOpen: true,
+      modalBookOnShelfOpen: false
+    })
   }
 
-  closeModal() {
-    this.setState({ isModalOpen: false })
+  showModalBookOnShelf(){
+    this.setState({
+      modalSearchListOpen: false,
+      modalBookOnShelfOpen: true
+    })
+  }
+
+  hideModal(){
+    this.refs.modal.hide();
   }
 
   search(term) {
@@ -85,6 +102,10 @@ class App extends React.Component {
         <h1 id="appTitle">PageTurner</h1>
         <h3 id="appSubtitle">The public-domain book manager app</h3>
         <BookShelf />
+        <button onClick={this.showModalSearchList}>Open ModalSearchList</button>
+        <button onClick={this.showModalBookOnShelf}>Open ModalBookOnShelf</button>
+        <ModalSearchList isOpen={this.state.modalSearchListOpen}/>
+        <ModalBookOnShelf isOpen={this.state.modalBookOnShelfOpen}/>
         <Search onSearch={this.search} />
         <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} modal={this.state.isModalOpen}/>
       </div>
