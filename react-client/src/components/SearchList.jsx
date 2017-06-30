@@ -4,6 +4,8 @@ import SearchListItem from './SearchListItem.jsx';
 const SearchList = (props) => {
   console.log('Inside Search List', props.searchedBooks)
 return (
+  <div>
+    <div id="resultsNumber">Displaying { props.searchedBooks.length } results.</div>
     <div id="searchResults">
       <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <thead>
@@ -23,10 +25,8 @@ return (
         </tbody>
       </table>
     </div>
+  </div>
   )
 };
-
-
-
 
 export default SearchList;
