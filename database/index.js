@@ -1,10 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
+var pg = require('pg');
 
 // Set up connection
 const databaseUrl = process.env.DATABASE_URL || 'postgres://localhost:5432/test';
-const sequelize = new Sequelize(databaseUrl);
+const sequelize = new Sequelize(databaseUrl, {
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: true
+  }
+});
 
 // Test the connection
 sequelize
