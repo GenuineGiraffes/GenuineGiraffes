@@ -31,7 +31,7 @@ class Search extends React.Component {
       <div id="searchArea">
         <input placeholder="Enter book" value={this.state.book} onChange={this.onChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)}/>
 
-        <button onClick={this.search.bind(this)}><i className="material-icons">search</i></button>
+        <button id="searchButton" onClick={this.search.bind(this)}><i className="material-icons">search</i></button>
 
       </div>
     )
