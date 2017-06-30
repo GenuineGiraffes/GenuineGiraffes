@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  background-color: skyblue;
+  background-color: #6B7F98;
 
 }
 
@@ -34,6 +34,7 @@ body {
   margin-top: 20px;
   transition: transform 0.4s ease;
   border: red;
+  cursor: pointer;
 }
 
 .book-tilted {
@@ -125,7 +126,31 @@ body {
   justify-content: center;
 }
 
+#searchButton {
+  cursor: pointer;
+}
+
 #resultsNumber {
   display: flex;
   justify-content: center;
+  text-align: center;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.bookTitle:hover {
+  cursor: pointer;
+  background-color: #B5B5B5;
+}
+
+.headset, .addBook {
+  cursor: pointer;
+}
+
+.modalClose {
+  float: right;
+}
+
+.thumbnail {
+  zoom: 25%;
 }
