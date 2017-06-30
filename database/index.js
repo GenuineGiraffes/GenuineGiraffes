@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 
 // Set up connection
-const databaseUrl = 'postgres://localhost:5432/test';
+const databaseUrl = process.env.DATABASE_URL || 'postgres://localhost:5432/test';
 const sequelize = new Sequelize(databaseUrl);
 
 // Test the connection
