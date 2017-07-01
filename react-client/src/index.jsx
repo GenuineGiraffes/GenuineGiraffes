@@ -48,7 +48,7 @@ class App extends React.Component {
 
   search(term) {
     console.log(`Submitting POST request...Searching ${term}...`)
-    axios.post('/book/import', { q: term })
+    axios.post('/book/import', { q: term }, {timeout: 3000})
       .then((res) => {
         const books = res.data.books;
         const searchedBooks = [];
@@ -74,14 +74,12 @@ class App extends React.Component {
         return this.setState({
           searchedBooks: searchedBooks
         });
-
-        //console.log(books);
       })
       .then(() => {
         console.log('Set the book state!', this.state.searchedBooks)
       })
       .catch((err) => {
-        console.log('ERROR: ', err);
+        console.log('Book does not exist or is not in the public domain');
       });
   }
 
