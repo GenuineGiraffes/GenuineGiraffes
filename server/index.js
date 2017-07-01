@@ -37,7 +37,6 @@ app.post('/book/import', function (req, res) {
     .then(function (titles) {
       var titleList = [];
       titles.map((title) => {
-
         // Librivox API Call Options
         var query = '%5E' + title.title_suggest.split(' ').join('%20');
         var librivoxOptions = {
@@ -49,8 +48,16 @@ app.post('/book/import', function (req, res) {
         rp(librivoxOptions)
           .then(function (data) {
             if (data !== "{\"error\":\"Audiobooks could not be found\"}") {
-              console.log("LIBRIVOX DATA: ", data);
+              // let booksData = JSON.parse(data).books;
+              // booksData.map((bookData) => {
+              //   console.log(isbn);
+              //   bookData.isbn = isbn;
+              //   bookData.cover = title
+              // });
+              // console.log(booksData);
               res.send(data);
+            } else {
+              res.send([]);
             }
           })
       });
