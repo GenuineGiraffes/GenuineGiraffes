@@ -8,7 +8,6 @@ const SearchListItem = (props) => {
       <td>{props.book.yearPublished}</td>
       <td>{props.book.genre}</td>
       <td>{props.book.lang}</td>
-      <td><img className="thumbnail" src={props.book.cover} /></td>
       <td><i className="material-icons">headset</i></td>
       <td onClick={ () => { props.addBookToLibrary(props.book) } }><a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons addBook">add</i></a></td>
     </tr>
@@ -16,3 +15,6 @@ const SearchListItem = (props) => {
 };
 
 export default SearchListItem;
+
+
+//<td><img className="thumbnail" src={props.book.cover} /></td>

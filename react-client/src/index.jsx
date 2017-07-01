@@ -15,7 +15,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      searchedBooks: [1, 2, 3],
+      searchedBooks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       modalSearchListOpen: false,
       modalBookOnShelfOpen: false,
     }
@@ -53,7 +53,7 @@ class App extends React.Component {
         const searchedBooks = [];
         books.map((book) => {
           var bookObject = {
-            isbn: book.isbn,
+            //isbn: book.isbn,
             title: book.title,
             author: book.authors[0].first_name + ' ' + book.authors[0].last_name,
             cover: book.cover,

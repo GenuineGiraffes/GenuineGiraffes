@@ -15,7 +15,6 @@ return (
             <th>Year Published</th>
             <th>Genre</th>
             <th>Language</th>
-            <th>Cover</th>
             <th>Audio</th>
             <th>Add</th>
           </tr>
@@ -30,3 +29,6 @@ return (
 };
 
 export default SearchList;
+
+
+//<th>Cover</th>
