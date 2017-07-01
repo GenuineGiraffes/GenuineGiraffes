@@ -47,14 +47,36 @@ class App extends React.Component {
 
   search(term) {
     console.log(`Submitting POST request...Searching ${term}...`)
-    axios.post('/book/import', {q: term})
+    axios.post('/book/import', { q: term })
       .then((res) => {
-        const searchedBooks = res.data;
+        const books = res.data.books;
+        const searchedBooks = [];
+        books.map((book) => {
+          var bookObject = {
+            isbn: book.isbn,
+            title: book.title,
+            author: book.authors[0].first_name + ' ' + book.authors[0].last_name,
+            cover: book.cover,
+            yearPublished: book.copyright_year,
+            content: book.url_text_source,
+            audio: book.url_librivox,
+            totaltime: book.totaltime,
+            //numPages: book.,
+            lang: book.language,
+            genre: book.genre,
+            description: book.description
+          };
+          console.log(bookObject);
+          searchedBooks.push(bookObject);
+        });
+
         return this.setState({
           searchedBooks: searchedBooks
         });
+
+        //console.log(books);
       })
-      .then( () => {
+      .then(() => {
         console.log('Set the book state!', this.state.searchedBooks)
       })
       .catch((err) => {
@@ -65,7 +87,7 @@ class App extends React.Component {
   addBookToLibrary(book) {
     console.log('Your book...', book)
     console.log('Submitting POST request...Adding book to library...')
-    axios.post('/library', {'book': book})
+    axios.post('/library', { 'book': book })
       .then((res) => {
         console.log('POST successful! Added book to library!')
       })
@@ -76,7 +98,7 @@ class App extends React.Component {
 
   deleteBookFromLibrary(book) {
     console.log('Submitting POST request...deleting book from library...');
-    axios.post('/library', {'book': book})
+    axios.post('/library', { 'book': book })
       .then((res) => {
         console.log('POST successful! Deleted book from library!');
       })
@@ -96,7 +118,7 @@ class App extends React.Component {
       });
   }
 
-  render () {
+  render() {
     return (
       <div>
         <h1 id="appTitle">PageTurner</h1>
@@ -107,7 +129,7 @@ class App extends React.Component {
         <ModalSearchList isOpen={this.state.modalSearchListOpen}/>
         <ModalBookOnShelf isOpen={this.state.modalBookOnShelfOpen}/>
         <Search onSearch={this.search} />
-        <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} modal={this.state.isModalOpen}/>
+        <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} modal={this.state.isModalOpen} />
       </div>
     )
   }
