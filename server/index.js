@@ -5,6 +5,7 @@ var rp = require('request-promise');
 var axios = require('axios');
 var database = require('../database/index.js');
 var addBooktoLibrary = require('../database/index.js').addBooktoLibrary;
+var getUserLibrary = require('../database/index.js').getUserLibrary;
 // var removeBookFromLibrary = require('../database/index.js').removeBookFromLibrary;
 var Sequelize = require('sequelize');
 
