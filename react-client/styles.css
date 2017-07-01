@@ -9,7 +9,6 @@ html {
 
 body {
   background-color: #6B7F98;
-
 }
 
 .bookshelf {
@@ -91,8 +90,8 @@ body {
 .book h3 {
   padding: 0;
   font-size: 0.7em;
-  transform-origin: 0 0;
-  transform: rotate(0.25turn) translateY(-15px) translateX(-20px);
+  transform-origin: 0% 0%;
+  transform: rotate(0.25turn) translateY(-30px) translateX(-20px);
   width: 150px;
 }
 

@@ -8,7 +8,7 @@ const databaseUrl = process.env.DATABASE_URL || 'postgres://localhost:5432/test'
 const sequelize = new Sequelize(databaseUrl, {
   dialect: 'postgres',
   dialectOptions: {
-    ssl: true
+    ssl: false
   }
 });
 
