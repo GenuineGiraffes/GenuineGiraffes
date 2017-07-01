@@ -1,107 +1,14 @@
 import React from 'react';
+import Book from './Book.jsx'
 
 const BookShelf = (props) => (
-  <div>
-    <h4 id="myBooks">My Books</h4>
-    <div className="bookshelf">
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
+  // const bookColors = ['book-green', 'book-blue'];
+    <div>
+      <h4 id="myBooks">My Books</h4>
+      <div className="bookshelf">
+      {props.libraryBooks.map(libraryBook => <Book libraryBook={libraryBook} />)}
       </div>
-      <div className="book book-tilted">
-        <div className="book book-blue">
-          <h2>TEST BOOK2</h2>
-        </div>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-purple">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-tan">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-brown">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-tan">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-purple">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-brown">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-tilted">
-        <div className="book book-green">
-          <h2>TEST BOOK</h2>
-        </div>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-brown">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-brown">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-      <div className="book book-green">
-        <h2>TEST BOOK</h2>
-      </div>
-
-
     </div>
-  </div>
-)
+);
 
 export default BookShelf;

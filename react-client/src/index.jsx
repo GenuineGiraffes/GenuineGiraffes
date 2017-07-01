@@ -18,6 +18,7 @@ class App extends React.Component {
       searchedBooks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       modalSearchListOpen: false,
       modalBookOnShelfOpen: false,
+      libraryBooks: [{title: 'BlahBlah'}]
     }
     this.addBookToLibrary = this.addBookToLibrary.bind(this);
     this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
@@ -123,7 +124,7 @@ class App extends React.Component {
       <div>
         <h1 id="appTitle">PageTurner</h1>
         <h3 id="appSubtitle">The public-domain book manager app</h3>
-        <BookShelf />
+        <BookShelf libraryBooks={this.state.libraryBooks}/>
         <button onClick={this.showModalSearchList}>Open ModalSearchList</button>
         <button onClick={this.showModalBookOnShelf}>Open ModalBookOnShelf</button>
         <ModalSearchList isOpen={this.state.modalSearchListOpen}/>
