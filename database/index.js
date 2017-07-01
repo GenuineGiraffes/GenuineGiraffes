@@ -87,18 +87,15 @@ const addBooktoLibrary = (book) => {
   })
 };
 
-const removeBookFromLibrary = (req, res) => {
-  Book.destroy({
+// const removeBookFromLibrary = (req, res) => {
+//   Book.destroy({
 
-  });
-};
-
-// const getUserLibrary = (req, res) => {
-//   Book.findAll({where: {username: req.body.username}})
-//     .then(function(books) {
-//       res.send(books);
-//     });
+//   });
 // };
+
+const getUserLibrary = () => {
+  return Book.findAll({});
+};
 
 
 // const checkIfUserExists = (req, res) => {
@@ -141,8 +138,8 @@ const removeBookFromLibrary = (req, res) => {
 
 module.exports = {
   addBooktoLibrary: addBooktoLibrary,
-  removeBookFromLibrary: removeBookFromLibrary,
-  // getUserLibrary: getUserLibrary,
+  // removeBookFromLibrary: removeBookFromLibrary,
+  getUserLibrary: getUserLibrary,
   // checkIfUserExists: checkIfUserExists,
   // createUser: createUser,
 };

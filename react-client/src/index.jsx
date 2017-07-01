@@ -21,7 +21,7 @@ class App extends React.Component {
       libraryBooks: [{title: 'BlahBlah'}]
     }
     this.addBookToLibrary = this.addBookToLibrary.bind(this);
-    this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
+    // this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
     this.fetchLibraryBooks = this.fetchLibraryBooks.bind(this);
     this.search = this.search.bind(this);
     this.showModalSearchList = this.showModalSearchList.bind(this);
@@ -91,28 +91,36 @@ class App extends React.Component {
     axios.post('/library', { 'book': book })
       .then((res) => {
         console.log('POST successful! Added book to library!')
+        this.fetchLibraryBooks();
       })
       .catch((err) => {
         console.log('ERROR: ', err);
       });
   }
 
-  deleteBookFromLibrary(book) {
-    console.log('Submitting POST request...deleting book from library...');
-    axios.post('/library', { 'book': book })
-      .then((res) => {
-        console.log('POST successful! Deleted book from library!');
-      })
-      .catch((err) => {
-        console.log('ERROR: ', err);
-      })
-  }
+  // deleteBookFromLibrary(book) {
+  //   console.log('Submitting POST request...deleting book from library...');
+  //   axios.delete('/library', { 'book': book })
+  //     .then((res) => {
+  //       console.log('POST successful! Deleted book from library!');
+  //     })
+  //     .catch((err) => {
+  //       console.log('ERROR: ', err);
+  //     })
+  // }
 
   fetchLibraryBooks() {
     console.log('Submitting GET request...fetching all library books...')
     axios.get('/library')
       .then((res) => {
-        console.log('GET successful! Got library books!')
+        console.log('Got library books!')
+        const libraryBooks = res.data;
+        return this.setState({
+          libraryBooks: libraryBooks
+        });
+      })
+      .then( () => {
+        console.log('Your current library...', this.state.libraryBooks);
       })
       .catch((err) => {
         console.log('ERROR: ', err);

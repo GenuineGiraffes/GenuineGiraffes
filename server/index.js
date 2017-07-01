@@ -5,6 +5,7 @@ var rp = require('request-promise');
 var axios = require('axios');
 var database = require('../database/index.js');
 var addBooktoLibrary = require('../database/index.js').addBooktoLibrary;
+// var removeBookFromLibrary = require('../database/index.js').removeBookFromLibrary;
 var Sequelize = require('sequelize');
 
 var app = express();
@@ -68,16 +69,37 @@ app.post('/book/import', function (req, res) {
 
 app.post('/library', function (req, res) {
   const book = req.body.book;
+  console.log('Saving ' + book.title + ' to library.')
   addBooktoLibrary(book)
     .then(() => {
       console.log('Book saved!')
+      res.send();
     })
     .catch((err) => {
       console.log('Error:', err);
-      console.log('Book already exist in database')
+      console.log('Book already exist in database');
+      res.send();
     })
-
 });
+
+app.get('/library', function (req, res) {
+  console.log('Inside Get...Grabbing your books...');
+  getUserLibrary()
+    .then( (books) => {
+      console.log('Here are the books I found!', books);
+      res.json(books);
+    })
+    .catch( (err) => {
+      console.log('Error: ', err);
+      res.send();
+    })
+});
+
+// app.delete('/library', function(req, res) {
+//   console.log('Inside DELETE...deleting ' + book.title + 'from your library');
+//   const book = req.body.book;
+//   removeBookFromLibrary(book)
+// })
 
 
 const PORT = process.env.PORT || 3000;
