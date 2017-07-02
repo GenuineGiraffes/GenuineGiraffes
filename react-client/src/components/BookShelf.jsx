@@ -8,9 +8,10 @@ const BookShelf = (props) => {
         <h4 id="myBooks">My Books</h4>
         <div className="bookshelf">
         {props.libraryBooks.map( (libraryBook, index) => {
-          return <Book key={index} 
-                      libraryBook={libraryBook} 
-                      deleteBookFromLibrary={props.deleteBookFromLibrary} 
+          return <Book key={index}
+                      libraryBook={libraryBook}
+                      showModalBookOnShelf={props.showModalBookOnShelf}
+                      deleteBookFromLibrary={props.deleteBookFromLibrary}
                   />
         })}
         </div>
