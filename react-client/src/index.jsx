@@ -150,6 +150,7 @@ class App extends React.Component {
         <Search onSearch={this.search} />
         <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} showModalSearchList={this.showModalSearchList} />
       </div>
+      
     )
   }
 }

@@ -30,9 +30,6 @@ class Search extends React.Component {
     return (
       <div id="searchArea">
         <input className="search" placeholder="Enter a title or author..." value={this.state.book} onChange={this.onChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)}/>
-
-       
-
       </div>
     )
   }
