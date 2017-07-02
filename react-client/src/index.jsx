@@ -15,6 +15,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      modalSearchBook: {},
+      modalLibraryBook: {},
       libraryBooks: [],
       searchedBooks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       modalSearchListOpen: false,
@@ -28,17 +30,29 @@ class App extends React.Component {
     this.showModalBookOnShelf = this.showModalBookOnShelf.bind(this);
   }
 
-  showModalSearchList(){
+  showModalSearchList(book){
     this.setState({
-      modalSearchListOpen: true,
-      modalBookOnShelfOpen: false
-    })
+      modalSearchBook: book
+    }, () => {
+      this.setState({
+        modalSearchListOpen: true,
+        modalBookOnShelfOpen: false
+      }, () => {
+      console.log('DONE SONNNNNNN!!!!')
+      });
+    });
   }
 
-  showModalBookOnShelf(){
+  showModalBookOnShelf(book){
     this.setState({
-      modalSearchListOpen: false,
-      modalBookOnShelfOpen: true
+      modalLibraryBook: book
+    }, () => {
+      this.setState({
+        modalSearchListOpen: false,
+        modalBookOnShelfOpen: true
+      }, () => {
+        console.log('DONE!!!!')
+      });
     })
   }
 
@@ -132,8 +146,8 @@ class App extends React.Component {
         <h1 id="appTitle">PageTurner</h1>
         <h3 id="appSubtitle">The public-domain book manager app</h3>
         <BookShelf libraryBooks={this.state.libraryBooks} showModalBookOnShelf={this.showModalBookOnShelf} deleteBookFromLibrary={this.deleteBookFromLibrary} />
-        <ModalSearchList isOpen={this.state.modalSearchListOpen}/>
-        <ModalBookOnShelf isOpen={this.state.modalBookOnShelfOpen}/>
+        <ModalSearchList isOpen={this.state.modalSearchListOpen} book={this.state.modalSearchBook} addBookToLibrary={this.addBookToLibrary}/>
+        <ModalBookOnShelf isOpen={this.state.modalBookOnShelfOpen} book={this.state.modalLibraryBook} deleteBookFromLibrary={this.deleteBookFromLibrary}/>
         <Search onSearch={this.search} />
         <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} showModalSearchList={this.showModalSearchList} />
       </div>
