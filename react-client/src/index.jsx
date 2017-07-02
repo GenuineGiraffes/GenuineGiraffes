@@ -144,15 +144,18 @@ class App extends React.Component {
     return (
       <div>
         <h1 id="appTitle">PageTurner</h1>
-        <h3 id="appSubtitle">The public-domain book manager app</h3>
         <BookShelf libraryBooks={this.state.libraryBooks} showModalBookOnShelf={this.showModalBookOnShelf} deleteBookFromLibrary={this.deleteBookFromLibrary} />
         <ModalSearchList isOpen={this.state.modalSearchListOpen} book={this.state.modalSearchBook} addBookToLibrary={this.addBookToLibrary}/>
         <ModalBookOnShelf isOpen={this.state.modalBookOnShelfOpen} book={this.state.modalLibraryBook} deleteBookFromLibrary={this.deleteBookFromLibrary}/>
         <Search onSearch={this.search} />
         <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} showModalSearchList={this.showModalSearchList} />
       </div>
+      
     )
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+
+{/*<h3 id="appSubtitle">The public-domain book manager app</h3>*/}
