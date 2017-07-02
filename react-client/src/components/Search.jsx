@@ -29,9 +29,9 @@ class Search extends React.Component {
   render() {
     return (
       <div id="searchArea">
-        <input placeholder="Enter book" value={this.state.book} onChange={this.onChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)}/>
+        <input className="search" placeholder="Enter a title or author..." value={this.state.book} onChange={this.onChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)}/>
 
-        <button id="searchButton" onClick={this.search.bind(this)}><i className="material-icons">search</i></button>
+       
 
       </div>
     )
@@ -39,3 +39,5 @@ class Search extends React.Component {
 }
 
 export default Search;
+
+//  <button id="searchButton" onClick={this.search.bind(this)}><i className="material-icons">search</i></button>
