@@ -3,7 +3,6 @@ import Boron from 'boron';
 import Modal from 'boron/OutlineModal';
 
 class ModalSearchList extends React.Component {
-
   constructor(props) {
     super(props);
 

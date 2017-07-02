@@ -6,8 +6,7 @@ var axios = require('axios');
 var database = require('../database/index.js');
 var addBooktoLibrary = require('../database/index.js').addBooktoLibrary;
 var getUserLibrary = require('../database/index.js').getUserLibrary;
-// var removeBookFromLibrary = require(‘../database/index.js’).removeBookFromLibrary;
-var Sequelize = require('sequelize');
+var removeBookFromLibrary = require('../database/index.js').removeBookFromLibrary;
 
 var app = express();
 app.use(bodyParser.json());
@@ -96,11 +95,19 @@ app.get('/library', function (req, res) {
     })
 });
 
-// app.delete('/library', function(req, res) {
-//   console.log('Inside DELETE...deleting ' + book.title + 'from your library');
-//   const book = req.body.book;
-//   removeBookFromLibrary(book)
-// })
+app.post('/library/delete', function(req, res) {
+  const book = req.body.book;
+  console.log('Inside DELETE...deleting ' + book.title + 'from your library');
+  removeBookFromLibrary(book)
+    .then( () => {
+      console.log('Book deleted!');
+      res.send();
+    })
+    .catch( (err) => {
+      console.log('Error: ', err);
+      res.send();
+    })
+})
 
 
 const PORT = process.env.PORT || 3000;
