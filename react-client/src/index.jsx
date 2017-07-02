@@ -131,13 +131,11 @@ class App extends React.Component {
       <div>
         <h1 id="appTitle">PageTurner</h1>
         <h3 id="appSubtitle">The public-domain book manager app</h3>
-        <BookShelf libraryBooks={this.state.libraryBooks} deleteBookFromLibrary={this.deleteBookFromLibrary} />
-        <button onClick={this.showModalSearchList}>Open ModalSearchList</button>
-        <button onClick={this.showModalBookOnShelf}>Open ModalBookOnShelf</button>
+        <BookShelf libraryBooks={this.state.libraryBooks} showModalBookOnShelf={this.showModalBookOnShelf} deleteBookFromLibrary={this.deleteBookFromLibrary} />
         <ModalSearchList isOpen={this.state.modalSearchListOpen}/>
         <ModalBookOnShelf isOpen={this.state.modalBookOnShelfOpen}/>
         <Search onSearch={this.search} />
-        <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} modal={this.state.isModalOpen} />
+        <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} showModalSearchList={this.showModalSearchList} />
       </div>
     )
   }

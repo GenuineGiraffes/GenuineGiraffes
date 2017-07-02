@@ -20,10 +20,11 @@ return (
         </thead>
         <tbody>
           { props.searchedBooks.map((book, index) => {
-            return <SearchListItem 
-                    key={index} 
-                    book={book} 
-                    addBookToLibrary={props.addBookToLibrary} 
+            return <SearchListItem
+                    key={index}
+                    book={book}
+                    showModalSearchList={props.showModalSearchList}
+                    addBookToLibrary={props.addBookToLibrary}
                     />
           })}
         </tbody>
