@@ -5,7 +5,6 @@ const SearchList = (props) => {
   console.log('Inside Search List', props.searchedBooks)
 return (
   <div>
-    <div id="resultsNumber">Displaying { props.searchedBooks.length } results.</div>
     <div id="searchResults">
       <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <thead>
@@ -20,7 +19,13 @@ return (
           </tr>
         </thead>
         <tbody>
-          { props.searchedBooks.map((book, index) => <SearchListItem key={index} book={book} addBookToLibrary={props.addBookToLibrary} />)}
+          { props.searchedBooks.map((book, index) => {
+            return <SearchListItem 
+                    key={index} 
+                    book={book} 
+                    addBookToLibrary={props.addBookToLibrary} 
+                    />
+          })}
         </tbody>
       </table>
     </div>
@@ -29,6 +34,3 @@ return (
 };
 
 export default SearchList;
-
-
-//<th>Cover</th>

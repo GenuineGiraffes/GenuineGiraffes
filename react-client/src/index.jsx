@@ -15,13 +15,13 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      libraryBooks: [],
       searchedBooks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       modalSearchListOpen: false,
-      modalBookOnShelfOpen: false,
-      libraryBooks: [{title: 'BlahBlah'}]
+      modalBookOnShelfOpen: false
     }
     this.addBookToLibrary = this.addBookToLibrary.bind(this);
-    // this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
+    this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
     this.fetchLibraryBooks = this.fetchLibraryBooks.bind(this);
     this.search = this.search.bind(this);
     this.showModalSearchList = this.showModalSearchList.bind(this);
@@ -96,16 +96,17 @@ class App extends React.Component {
       });
   }
 
-  // deleteBookFromLibrary(book) {
-  //   console.log('Submitting POST request...deleting book from library...');
-  //   axios.delete('/library', { 'book': book })
-  //     .then((res) => {
-  //       console.log('POST successful! Deleted book from library!');
-  //     })
-  //     .catch((err) => {
-  //       console.log('ERROR: ', err);
-  //     })
-  // }
+  deleteBookFromLibrary(book) {
+    console.log('Submitting POST request...deleting book from library...');
+    axios.post('/library/delete', { 'book': book })
+      .then((res) => {
+        console.log('Deleted book from library!');
+        this.fetchLibraryBooks();
+      })
+      .catch((err) => {
+        console.log('ERROR: ', err);
+      })
+  }
 
   fetchLibraryBooks() {
     console.log('Submitting GET request...fetching all library books...')
@@ -130,7 +131,7 @@ class App extends React.Component {
       <div>
         <h1 id="appTitle">PageTurner</h1>
         <h3 id="appSubtitle">The public-domain book manager app</h3>
-        <BookShelf libraryBooks={this.state.libraryBooks}/>
+        <BookShelf libraryBooks={this.state.libraryBooks} deleteBookFromLibrary={this.deleteBookFromLibrary} />
         <button onClick={this.showModalSearchList}>Open ModalSearchList</button>
         <button onClick={this.showModalBookOnShelf}>Open ModalBookOnShelf</button>
         <ModalSearchList isOpen={this.state.modalSearchListOpen}/>

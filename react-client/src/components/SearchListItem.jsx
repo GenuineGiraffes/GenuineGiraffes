@@ -1,4 +1,5 @@
 import React from 'react';
+import ModalSearchList from './ModalSearchList.jsx';
 
 const SearchListItem = (props) => {
   return (

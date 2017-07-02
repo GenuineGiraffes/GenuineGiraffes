@@ -87,11 +87,13 @@ const addBooktoLibrary = (book) => {
   })
 };
 
-// const removeBookFromLibrary = (req, res) => {
-//   Book.destroy({
-
-//   });
-// };
+const removeBookFromLibrary = (book) => {
+  return Book.destroy({
+    where: {
+      title: book.title
+    }
+  });
+};
 
 const getUserLibrary = () => {
   return Book.findAll({});
@@ -138,7 +140,7 @@ const getUserLibrary = () => {
 
 module.exports = {
   addBooktoLibrary: addBooktoLibrary,
-  // removeBookFromLibrary: removeBookFromLibrary,
+  removeBookFromLibrary: removeBookFromLibrary,
   getUserLibrary: getUserLibrary,
   // checkIfUserExists: checkIfUserExists,
   // createUser: createUser,
