@@ -18,7 +18,7 @@ class App extends React.Component {
       modalSearchBook: {},
       modalLibraryBook: {},
       libraryBooks: [],
-      searchedBooks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+      searchedBooks: [],
       modalSearchListOpen: false,
       modalBookOnShelfOpen: false
     }
@@ -67,7 +67,7 @@ class App extends React.Component {
   search(term) {
     var context = this;
     context.setState({
-      searchedBooks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+      searchedBooks: []
     }, () => {
       console.log('reset searchedBooks state before search');
     });
@@ -150,6 +150,13 @@ class App extends React.Component {
       });
   }
 
+  displaySearchedBooks(props) {
+    if (props.searchedBooks.length > 0) {
+      return <SearchList addBookToLibrary={props.addBookToLibrary} searchedBooks={props.searchedBooks} showModalSearchList={props.showModalSearchList} />
+    }
+    return <h1></h1>
+  }
+
   render() {
     return (
       <div>
@@ -158,7 +165,7 @@ class App extends React.Component {
         <ModalSearchList isOpen={this.state.modalSearchListOpen} book={this.state.modalSearchBook} addBookToLibrary={this.addBookToLibrary}/>
         <ModalBookOnShelf isOpen={this.state.modalBookOnShelfOpen} book={this.state.modalLibraryBook} deleteBookFromLibrary={this.deleteBookFromLibrary}/>
         <Search onSearch={this.search} />
-        <SearchList addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} showModalSearchList={this.showModalSearchList} />
+        <this.displaySearchedBooks addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} showModalSearchList={this.showModalSearchList} />
       </div>
       
     )
