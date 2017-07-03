@@ -3,7 +3,7 @@ import ModalSearchList from './ModalSearchList.jsx';
 
 const SearchListItem = (props) => {
   return (
-    <tr>
+    <tr className="searchRow">
       <td onClick={ () => { props.showModalSearchList(props.book) }} className="mdl-data-table__cell--non-numeric">{props.book.title}</td>
       <td onClick={ () => { props.showModalSearchList(props.book) }} className="mdl-data-table__cell--non-numeric">{props.book.author}</td>
       <td onClick={ () => { props.showModalSearchList(props.book) }} className="mdl-data-table__cell--non-numeric">{props.book.yearPublished}</td>

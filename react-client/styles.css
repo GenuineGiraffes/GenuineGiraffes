@@ -104,7 +104,7 @@ body {
     font-size: 16px;
     background-color: white;
     background-image: url('searchicon.png');
-    background-position: 10px 10px; 
+    background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
 }
@@ -156,10 +156,14 @@ body {
   background-color: #B5B5B5;
 }
 
-.headset, .addBook {
+.headset, .addBook, .searchRow, button, a {
   cursor: pointer;
 }
 
+/*.headset {
+  zoom: 125%;
+}
+*/
 .modalClose {
   float: right;
   text-decoration: none;
@@ -169,3 +173,15 @@ body {
   zoom: 25%;
 }
 
+#audioButton {
+/*  display: flex;
+  justify-content: center;*/
+  padding-top: 10px;
+  left: 50%;
+  color: black;
+  text-decoration: none;
+}
+
+.bookSummary {
+  margin-bottom: 50px;
+}
