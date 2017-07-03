@@ -83,7 +83,9 @@ class App extends React.Component {
     var context = this;
     context.setState({
       searchedBooks: [],
-      modalSearchErrorOpen: false
+      modalSearchErrorOpen: false,
+      modalSearchListOpen: false,
+      modalBookOnShelfOpen: false
     }, () => {
       console.log('reset searchedBooks state before search');
     });
@@ -127,6 +129,13 @@ class App extends React.Component {
     console.log('Your book...', book)
     console.log('Submitting POST request...Adding book to library...')
     axios.post('/library', { 'book': book })
+      .then((res) => {
+        return this.setState({
+          modalSearchErrorOpen: false,
+          modalSearchListOpen: false,
+          modalBookOnShelfOpen: false
+        });
+      })
       .then((res) => {
         console.log('POST successful! Added book to library!')
         this.fetchLibraryBooks();
