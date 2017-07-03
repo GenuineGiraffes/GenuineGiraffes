@@ -6,7 +6,7 @@ const SearchList = (props) => {
 return (
   <div>
     <div id="searchResults">
-      <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+      <table className="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
         <thead>
           <tr>
             <th className="mdl-data-table__cell--non-numeric">Title</th>
