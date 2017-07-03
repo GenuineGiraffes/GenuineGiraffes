@@ -1,13 +1,13 @@
-# Project Name
+# PageTurer
 
-> Pithy project description
+> A Personal Public Domain Library
 
-## Team
+## Genuine Geraffes
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Ben Bucca
+  - Tyler Pate
+  - Karina Dalca
+  - Brendan Burns
 
 ## Table of Contents
 
@@ -21,15 +21,23 @@
 
 ## Usage
 
-> Some usage instructions
+> Search for any book avaialable in the public domain and add them to your personal library
+> Add, removed and read books in your personal library using the modals that popup on pressing any book of interest
+> Click the read button on the popup modals to be taken to te book's contents
+> Click the headphones to download the audio zip file of the book
 
 ## Requirements
 
-- Node 6.4.x
-- Redis 2.6.x
+- React 15.6.1
+- Node 6.10.2
+- NPM 3.10.10
 - Postgresql 9.1.x
-- etc
-- etc
+- Axios 0.16.2
+- Request 2.81.0
+- Request-Promise 4.2.1
+- Webpack 2.6.1
+- Sequelize 4.2.0
+- Material-Design-Lite 1.3.0
 
 ## Development
 
@@ -38,9 +46,8 @@
 From within the root directory:
 
 ```sh
-npm install -g bower
 npm install
-bower install
+npm run
 ```
 
 ### Roadmap
