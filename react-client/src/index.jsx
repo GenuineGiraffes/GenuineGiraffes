@@ -52,8 +52,9 @@ class App extends React.Component {
       modalSearchBook: book
     }, () => {
       this.setState({
+        modalSearchErrorOpen: false,
         modalSearchListOpen: true,
-        modalBookOnShelfOpen: false
+        modalBookOnShelfOpen: false,
       }, () => {
       console.log('DONE SONNNNNNN!!!!')
       });
@@ -66,6 +67,7 @@ class App extends React.Component {
     }, () => {
       this.setState({
         modalSearchListOpen: false,
+        modalSearchErrorOpen: false,
         modalBookOnShelfOpen: true
       }, () => {
         console.log('DONE!!!!')
@@ -80,7 +82,8 @@ class App extends React.Component {
   search(term) {
     var context = this;
     context.setState({
-      searchedBooks: []
+      searchedBooks: [],
+      modalSearchErrorOpen: false
     }, () => {
       console.log('reset searchedBooks state before search');
     });
