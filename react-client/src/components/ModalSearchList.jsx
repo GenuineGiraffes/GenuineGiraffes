@@ -71,7 +71,7 @@ class ModalSearchList extends React.Component {
           <h4 className="bookAuthor">by {this.props.book.author}</h4>
           <h5 className="bookDate">{this.props.book.yearPublished}</h5>
           <p className="bookSummary">{this.removeHTMLtags(this.props.book.description)}</p>
-          <h5 className="bookAudio">Click to download audio version:  <i className="material-icons headset">headset</i></h5>
+          <h5 className="bookAudio">Click to download audio version:  <a href={this.props.book.audio} target="_blank" style={{color:'black'}}><i className="material-icons headset">headset</i></a></h5>
           <button className="modalClose" onClick={
               () => {
                 this.hideModal.bind(this)();

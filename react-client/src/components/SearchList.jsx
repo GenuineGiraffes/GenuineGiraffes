@@ -12,7 +12,6 @@ return (
             <th className="mdl-data-table__cell--non-numeric">Title</th>
             <th>Author</th>
             <th>Year Published</th>
-            <th>Genre</th>
             <th>Language</th>
             <th>Audio</th>
             <th>Add</th>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Boron from 'boron';
 import Modal from 'boron/OutlineModal';
+import $ from 'jquery';
 
 class ModalBookOnShelf extends React.Component {
   constructor(props) {
@@ -41,6 +42,8 @@ class ModalBookOnShelf extends React.Component {
         fontWeight: 400
       }
     }
+
+    this.removeHTMLtags = this.removeHTMLtags.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -55,6 +58,10 @@ class ModalBookOnShelf extends React.Component {
     this.refs.modal.hide();
   }
 
+  removeHTMLtags(html) {
+    return $("<p/>").html(html).text();
+  }
+
   render() {
     return (
       <Modal ref="modal">
@@ -62,8 +69,8 @@ class ModalBookOnShelf extends React.Component {
           <h3 className="bookTitle" style={this.styles.title}><strong>{this.props.book.title}</strong></h3>
           <h4 className="bookAuthor">by {this.props.book.author}</h4>
           <h5 className="bookDate">{this.props.book.yearPublished}</h5>
-          <p className="bookSummary">{this.props.book.description}</p>
-          <h5 className="bookAudio">Click to download audio version:  <i className="material-icons headset">headset</i></h5>
+          <p className="bookSummary">{this.removeHTMLtags(this.props.book.description)}</p>
+          <h5 className="bookAudio">Click to download audio version:  <a href={this.props.book.audio} target="_blank" style={{color:'black'}}><i className="material-icons headset">headset</i></a></h5>
           <button className="modalClose" onClick={ () =>{
             this.hideModal.bind(this)();
             this.props.deleteBookFromLibrary(this.props.book);
