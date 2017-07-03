@@ -78,7 +78,7 @@ class ModalSearchList extends React.Component {
                 this.props.addBookToLibrary(this.props.book);
               }
             } style={this.styles.btn1}>Add</button>
-          <button className="modalClose" onClick={this.hideModal.bind(this)} style={this.styles.btn2}>Read</button>
+         <a className="modalClose" style={this.styles.btn1} href={this.props.book.content} style={this.styles.btn2}>Read</a>
         </div>
       </Modal>
     )
