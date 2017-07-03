@@ -6,6 +6,7 @@ import Search from './components/Search.jsx';
 import BookShelf from './components/BookShelf.jsx';
 import ModalSearchList from './components/ModalSearchList.jsx';
 import ModalBookOnShelf from './components/ModalBookOnShelf.jsx';
+import ModalErrorSearch from './components/ModalErrorSearch.jsx'
 import Boron from 'boron';
 import Modal from 'boron/OutlineModal';
 import axios from 'axios';
@@ -20,7 +21,8 @@ class App extends React.Component {
       libraryBooks: [],
       searchedBooks: [],
       modalSearchListOpen: false,
-      modalBookOnShelfOpen: false
+      modalBookOnShelfOpen: false,
+      modalSearchErrorOpen: false
     }
     this.addBookToLibrary = this.addBookToLibrary.bind(this);
     this.deleteBookFromLibrary = this.deleteBookFromLibrary.bind(this);
@@ -28,10 +30,21 @@ class App extends React.Component {
     this.search = this.search.bind(this);
     this.showModalSearchList = this.showModalSearchList.bind(this);
     this.showModalBookOnShelf = this.showModalBookOnShelf.bind(this);
+    this.showModalSearchError = this.showModalSearchError.bind(this);
   }
 
   componentDidMount() {
     this.fetchLibraryBooks();
+  }
+
+  showModalSearchError() {
+    this.setState({
+      modalSearchErrorOpen: true,
+      modalSearchListOpen: false,
+      modalBookOnShelfOpen: false
+    }, () => {
+      console.log("error modal works!")
+    });
   }
 
   showModalSearchList(book){
@@ -103,7 +116,7 @@ class App extends React.Component {
         console.log('Set the book state!', this.state.searchedBooks)
       })
       .catch((err) => {
-        console.log('Book does not exist or is not in the public domain');
+        console.log('Book does not exist or is not in the public domain', this.showModalSearchError());
       });
   }
 
@@ -138,9 +151,15 @@ class App extends React.Component {
       .then((res) => {
         console.log('Got library books!')
         const libraryBooks = res.data;
-        return this.setState({
-          libraryBooks: libraryBooks
-        });
+        if (libraryBooks === '') {
+          return this.setState({
+            libraryBooks: []
+          });
+        } else {
+          return this.setState({
+            libraryBooks: libraryBooks
+          });
+        }
       })
       .then( () => {
         console.log('Your current library...', this.state.libraryBooks);
@@ -164,6 +183,7 @@ class App extends React.Component {
         <BookShelf libraryBooks={this.state.libraryBooks} showModalBookOnShelf={this.showModalBookOnShelf} deleteBookFromLibrary={this.deleteBookFromLibrary} />
         <ModalSearchList isOpen={this.state.modalSearchListOpen} book={this.state.modalSearchBook} addBookToLibrary={this.addBookToLibrary}/>
         <ModalBookOnShelf isOpen={this.state.modalBookOnShelfOpen} book={this.state.modalLibraryBook} deleteBookFromLibrary={this.deleteBookFromLibrary}/>
+        <ModalErrorSearch isOpen={this.state.modalSearchErrorOpen}/>
         <Search onSearch={this.search} />
         <this.displaySearchedBooks addBookToLibrary={this.addBookToLibrary} searchedBooks={this.state.searchedBooks} showModalSearchList={this.showModalSearchList} />
       </div>
@@ -174,5 +194,3 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
-
-{/*<h3 id="appSubtitle">The public-domain book manager app</h3>*/}

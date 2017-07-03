@@ -2,7 +2,7 @@ import React from 'react';
 import Book from './Book.jsx'
 
 const BookShelf = (props) => {
-  console.log(props);
+  console.log('hi bookshelf props iiiiii', props);
   return (
       <div>
         <div className="bookshelf">

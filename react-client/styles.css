@@ -173,6 +173,7 @@ body {
   zoom: 25%;
 }
 
+<<<<<<< HEAD
 #audioButton {
 /*  display: flex;
   justify-content: center;*/
@@ -185,3 +186,28 @@ body {
 .bookSummary {
   margin-bottom: 50px;
 }
+=======
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  
+  /*
+  Nope =(
+  margin-left: -25%;
+  margin-top: -25%;
+  */
+/* 
+  Yep!
+  */
+  transform: translate(-50%, -50%);
+  
+  /*
+  Not even necessary really. 
+  e.g. Height could be left out!
+  */
+  width: 40%;
+  height: 50%;
+}
+
+>>>>>>> implement error modal
