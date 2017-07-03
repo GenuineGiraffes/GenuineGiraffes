@@ -30,6 +30,10 @@ class App extends React.Component {
     this.showModalBookOnShelf = this.showModalBookOnShelf.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchLibraryBooks();
+  }
+
   showModalSearchList(book){
     this.setState({
       modalSearchBook: book
@@ -87,7 +91,7 @@ class App extends React.Component {
             genre: book.genre,
             description: book.description
           };
-          console.log(bookObject);
+          //console.log(bookObject);
           searchedBooks.push(bookObject);
         });
 
