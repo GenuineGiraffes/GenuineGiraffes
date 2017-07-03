@@ -68,7 +68,7 @@ class App extends React.Component {
       console.log('reset searchedBooks state before search');
     });
     console.log(`Submitting POST request...Searching ${term}...`)
-    axios.post('/book/import', { q: term }, {timeout: 3000})
+    axios.post('/book/import', { q: term }, {timeout: 5000})
       .then((res) => {
         const books = res.data.books;
         const searchedBooks = [];
