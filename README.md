@@ -1,6 +1,6 @@
 # PageTurner
 
-> A Personal Public Domain Library
+> A Personal Public Domain Library Book & Audiobook Search
 
 ## Genuine Geraffes
 
@@ -21,10 +21,10 @@
 
 ## Usage
 
-> Search for any book avaialable in the public domain and add them to your personal library
-> Add, removed and read books in your personal library using the modals that popup on pressing any book of interest
-> Click the read button on the popup modals to be taken to te book's contents
-> Click the headphones to download the audio zip file of the book
+> Search for any book, and corresponding audiobook if available, in the public domain and add them to your personal library
+> Add, remove and read books in your personal library using modals that appear upon clicking any book title
+> Click the read button to be taken to the book's public domain contents
+> Click the button with the headphones icon to download the audiobook zip file of the book
 
 ## Requirements
 
